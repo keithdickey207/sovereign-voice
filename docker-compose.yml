@@ -1,0 +1,15 @@
+services:
+  ovos_core:
+    image: ghcr.io/openvoiceos/ovos-core:stable
+    container_name: ovos_core
+    restart: unless-stopped
+    environment:
+      - TZ=America/New_York
+    volumes:
+      - ./config:/home/ovos/.config/mycroft
+      - ./share:/home/ovos/.local/share/mycroft
+      - /dev/snd:/dev/snd
+    devices:
+      - "/dev/snd:/dev/snd"
+    network_mode: "host"
+    ipc: "host"
